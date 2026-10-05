@@ -788,7 +788,7 @@ bool initialize() {
 
     objects[2].name = "Icosahedron C";
     objects[2].position = {2.6f, 0.0f, 7.0f};
-    objects[2].scale = {0.8f, 1.3f, 0.8f};
+    objects[2].scale = {1.0f, 1.0f, 1.0f};
     objects[2].color[0] = 0.7f;
     objects[2].color[1] = 0.85f;
     objects[2].color[2] = 1.0f;
