@@ -106,6 +106,14 @@ if(GLSLC_FOUND)
 	# compile_shader(example.vert)
 	# compile_shader(example.frag)
 
+	# Шейдеры лабораторной работы №1 (икосаэдр).
+	# glslc компилирует их в shaders/*.spv рядом с исходниками,
+	# откуда application.cpp их загружает (loadShaderModule).
+	compile_shader(icosahedron.vert)
+	compile_shader(icosahedron.frag)
+	compile_shader(edge.vert)
+	compile_shader(edge.frag)
+
 	add_custom_target(shaders DEPENDS ${_SHADER_BINARIES})
 	add_dependencies(${PROJECT_NAME} shaders)
 endif()
