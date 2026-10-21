@@ -1,0 +1,10 @@
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\8DFFF4DF297F83057DD1D87EAC54D971\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild -BC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

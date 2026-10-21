@@ -1,0 +1,10 @@
+C:\Users\slavr\OneDrive\Documents\CG_Lab\source\main.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\main.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\source\graphics_internal.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\graphics_internal.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\source\application.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\application.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\backends\imgui_impl_glfw.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_impl_glfw.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\backends\imgui_impl_vulkan.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_impl_vulkan.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\imgui.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\imgui_draw.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_draw.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\imgui_tables.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_tables.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\imgui_widgets.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_widgets.obj
+C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\imgui-src\imgui_demo.cpp;C:\Users\slavr\OneDrive\Documents\CG_Lab\build\vulkan-starter-app.dir\Release\imgui_demo.obj

@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/slavr/OneDrive/Documents/CG_Lab/build/cmake_install.cmake",
+		"C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/cmake_install.cmake",
+		"C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/src/cmake_install.cmake",
+		"C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-build/cmake_install.cmake",
+		"C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

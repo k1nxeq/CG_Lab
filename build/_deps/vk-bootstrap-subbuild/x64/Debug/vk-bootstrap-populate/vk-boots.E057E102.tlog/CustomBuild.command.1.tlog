@@ -1,0 +1,150 @@
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/tmp/vk-bootstrap-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/tmp/vk-bootstrap-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vk-bootstrap-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/tmp/vk-bootstrap-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vk-bootstrap-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vk-bootstrap-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vk-bootstrap-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\3C235BBFB4AC2C72D7B55B57F9988281\VK-BOOTSTRAP-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vk-bootstrap-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\19EDD91ED45568E0A15ECD8994EAC538\VK-BOOTSTRAP-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/CMakeFiles/Debug/vk-bootstrap-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/vk-bootstrap-populate-prefix/src/vk-bootstrap-populate-stamp/Debug/vk-bootstrap-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKEFILES\8DFFF4DF297F83057DD1D87EAC54D971\VK-BOOTSTRAP-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VK-BOOTSTRAP-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild -BC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild --check-stamp-file C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

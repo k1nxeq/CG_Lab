@@ -1,0 +1,150 @@
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/tmp/vulkanmemoryallocator-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/tmp/vulkanmemoryallocator-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vulkanmemoryallocator-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/tmp/vulkanmemoryallocator-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vulkanmemoryallocator-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vulkanmemoryallocator-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vulkanmemoryallocator-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\DA2613FFA73D69631099A4FE37003F70\VULKANMEMORYALLOCATOR-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\slavr\OneDrive\Documents\CG_Lab\build\_deps\vulkanmemoryallocator-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\09C99C8A0332B54592C0D0B2E2E7060A\VULKANMEMORYALLOCATOR-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/Debug/vulkanmemoryallocator-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/vulkanmemoryallocator-populate-prefix/src/vulkanmemoryallocator-populate-stamp/Debug/vulkanmemoryallocator-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKEFILES\A741049AA50630155214FDAB5A15D7DF\VULKANMEMORYALLOCATOR-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\_DEPS\VULKANMEMORYALLOCATOR-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild -BC:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild --check-stamp-file C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

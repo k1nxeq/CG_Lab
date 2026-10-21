@@ -1,0 +1,16 @@
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/vulkan-starter-app.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/shaders.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/INSTALL.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/CMakeFiles/uninstall.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/CMakeFiles/INSTALL.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/src/CMakeFiles/glfw.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/src/CMakeFiles/update_mappings.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/glfw-build/src/CMakeFiles/INSTALL.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-build/CMakeFiles/vk-bootstrap.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-build/CMakeFiles/INSTALL.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vk-bootstrap-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-build/CMakeFiles/INSTALL.dir
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-build/CMakeFiles/ALL_BUILD.dir

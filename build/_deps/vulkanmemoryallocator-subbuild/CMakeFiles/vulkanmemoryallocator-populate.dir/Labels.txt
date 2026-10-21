@@ -1,0 +1,14 @@
+# Target labels
+ vulkanmemoryallocator-populate
+# Source files and their labels
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/vulkanmemoryallocator-populate
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/a741049aa50630155214fdab5a15d7df/vulkanmemoryallocator-populate.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/09c99c8a0332b54592c0d0b2e2e7060a/vulkanmemoryallocator-populate-complete.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-build.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-configure.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-download.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-install.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-mkdir.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-patch.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-test.rule
+C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/da2613ffa73d69631099a4fe37003f70/vulkanmemoryallocator-populate-update.rule

@@ -1,0 +1,58 @@
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\CMAKEFILES\19BAD67C2441EECD1FEFDDBABDC1CA43\LIT.FRAG.SPV.RULE
+setlocal
+glslc C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/lit.frag -o C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/lit.frag.spv
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\CMAKEFILES\19BAD67C2441EECD1FEFDDBABDC1CA43\LIT.VERT.SPV.RULE
+setlocal
+glslc C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/lit.vert -o C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/lit.vert.spv
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\CMAKEFILES\19BAD67C2441EECD1FEFDDBABDC1CA43\UNLIT.FRAG.SPV.RULE
+setlocal
+glslc C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/unlit.frag -o C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/unlit.frag.spv
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\CMAKEFILES\19BAD67C2441EECD1FEFDDBABDC1CA43\UNLIT.VERT.SPV.RULE
+setlocal
+glslc C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/unlit.vert -o C:/Users/slavr/OneDrive/Documents/CG_Lab/shaders/unlit.vert.spv
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\BUILD\CMAKEFILES\6E4FD0F27FC1DF2BDEF804D691B59A7B\SHADERS.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\SLAVR\ONEDRIVE\DOCUMENTS\CG_LAB\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/slavr/OneDrive/Documents/CG_Lab -BC:/Users/slavr/OneDrive/Documents/CG_Lab/build --check-stamp-file C:/Users/slavr/OneDrive/Documents/CG_Lab/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
