@@ -1,3 +1,0 @@
-C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/vulkanmemoryallocator-populate.dir
-C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/ALL_BUILD.dir
-C:/Users/slavr/OneDrive/Documents/CG_Lab/build/_deps/vulkanmemoryallocator-subbuild/CMakeFiles/ZERO_CHECK.dir
