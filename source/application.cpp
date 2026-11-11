@@ -28,10 +28,10 @@ constexpr uint32_t max_spot_lights = 16;
 constexpr uint32_t cone_segments = 24;
 constexpr float icosahedron_radius = 1.0f;
 
-// Максимальное число моделей в одном динамическом uniform-буфере (лекция #6, слайд 6)
+
 constexpr uint32_t max_models = 1024;
-// Размер staging-буфера для копирования из RAM в VRAM (лекция #5.2, слайд 11)
-constexpr VkDeviceSize staging_buffer_size = 64 * 1024 * 1024; // 64 MB
+
+constexpr VkDeviceSize staging_buffer_size = 64 * 1024 * 1024;
 
 enum class ProjectionType {
     Perspective = 0,
@@ -51,10 +51,10 @@ struct ModelUniforms {
     float model[16];
     float albedo[4];
     float specular[4];
-    float params[4]; // x: smoothNormals, y: uvScale, z: emissiveStrength, w: unused
+    float params[4];
 };
 
-// Push-константы для нетривиального сэмплирования (лекция #6, слайд 16-18)
+
 struct PipelineConsts {
     uint32_t nontrivialSampling = 0;
     float time = 0.0f;
@@ -210,17 +210,17 @@ Vec3 animatedRotationSpeedDegrees{20.0f, 30.0f, 40.0f};
 Vec3 orbitCenter{0.0f, -1.0f, 6.0f};
 float orbitSpeedDegrees = 40.0f;
 
-// Объекты Vulkan для Лабораторной №3
+
 VkCommandPool uploadCommandPool = VK_NULL_HANDLE;
 VkCommandBuffer oneshotCommandBuffer = VK_NULL_HANDLE;
 GpuBuffer stagingBuffer;
 VkDeviceSize stagingOffset = 0;
 
-GpuBuffer modelUniformBuffer; // Динамический UBO для всех моделей
+GpuBuffer modelUniformBuffer;
 VkDeviceSize modelUniformAlignment = sizeof(ModelUniforms);
 
 VkSampler textureSampler = VK_NULL_HANDLE;
-GpuTexture blackDummyTexture; // Служебная текстура 1x1 с одним чёрным пикселем
+GpuTexture blackDummyTexture;
 std::vector<TextureMaterial> materials;
 
 VkDescriptorSetLayout sceneDescriptorSetLayout = VK_NULL_HANDLE;
@@ -242,7 +242,7 @@ VkShaderModule unlitFragmentShader = VK_NULL_HANDLE;
 VkShaderModule edgeVertexShader = VK_NULL_HANDLE;
 VkShaderModule edgeFragmentShader = VK_NULL_HANDLE;
 
-// ---------------------------------------------------------------- Шум Перлина и генерация PNG файлов
+
 namespace procedural_tex {
 
 float fade(float t) { return t * t * t * (t * (t * 6.0f - 15.0f) + 10.0f); }
@@ -309,7 +309,7 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
     std::vector<uint8_t> spec(S * S * 4);
     std::vector<uint8_t> emis(S * S * 4);
 
-    // 1. Кирпичная кладка (Brick)
+
     for (uint32_t y = 0; y < S; ++y) {
         for (uint32_t x = 0; x < S; ++x) {
             float u = static_cast<float>(x) / S;
@@ -341,7 +341,7 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
     savePngIfNotExists(dir / "brick_albedo.png", S, S, albedo);
     savePngIfNotExists(dir / "brick_specular.png", S, S, spec);
 
-    // 2. Лавовый камень с расщелинами из шума Перлина (Lava Rock: Albedo + Specular + Emissive)
+
     for (uint32_t y = 0; y < S; ++y) {
         for (uint32_t x = 0; x < S; ++x) {
             float u = static_cast<float>(x) / S;
@@ -358,12 +358,12 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
             albedo[idx + 2] = toByte(lerp(rock * 1.05f, 0.05f, crack));
             albedo[idx + 3] = 255;
 
-            // Блестят только гладкие обсидиановые участки камня вне трещин
+
             uint8_t sp = toByte((1.0f - crack) * std::pow(n2, 1.5f) * 0.9f);
             spec[idx + 0] = spec[idx + 1] = spec[idx + 2] = sp;
             spec[idx + 3] = 255;
 
-            // Emissive из шума Перлина: светится только лава в трещинах!
+
             emis[idx + 0] = toByte(crack * 1.0f);
             emis[idx + 1] = toByte(crack * crack * 0.55f);
             emis[idx + 2] = toByte(crack * crack * crack * 0.1f);
@@ -374,7 +374,7 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
     savePngIfNotExists(dir / "lava_specular.png", S, S, spec);
     savePngIfNotExists(dir / "lava_emissive.png", S, S, emis);
 
-    // 3. Кибер-панель (Sci-Fi Panel: Albedo + Specular + Emissive)
+   
     for (uint32_t y = 0; y < S; ++y) {
         for (uint32_t x = 0; x < S; ++x) {
             float u = static_cast<float>(x) / S;
@@ -414,7 +414,7 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
     savePngIfNotExists(dir / "scifi_specular.png", S, S, spec);
     savePngIfNotExists(dir / "scifi_emissive.png", S, S, emis);
 
-    // 4. Мраморная плитка (Marble Tiles: Albedo + Specular, без Emissive)
+
     for (uint32_t y = 0; y < S; ++y) {
         for (uint32_t x = 0; x < S; ++x) {
             float u = static_cast<float>(x) / S;
@@ -452,7 +452,7 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
     savePngIfNotExists(dir / "marble_albedo.png", S, S, albedo);
     savePngIfNotExists(dir / "marble_specular.png", S, S, spec);
 
-    // 5. Матовое дерево (Wood Planks: только Albedo, без Specular и без Emissive)
+
     for (uint32_t y = 0; y < S; ++y) {
         for (uint32_t x = 0; x < S; ++x) {
             float u = static_cast<float>(x) / S;
@@ -480,7 +480,6 @@ void ensureTextureFilesOnDisk(const std::filesystem::path& dir) {
 
 } // namespace procedural_tex
 
-// ---------------------------------------------------------------- Работа с буферами и памятью GPU
 
 bool createHostBuffer(size_t size, VkBufferUsageFlags usage, GpuBuffer& result) {
     const size_t alignedSize = (size + 0xf) & ~static_cast<size_t>(0xf);
@@ -506,7 +505,7 @@ bool createHostBuffer(size_t size, VkBufferUsageFlags usage, GpuBuffer& result) 
     return result.mapped != nullptr;
 }
 
-// Выделение буфера в VRAM (GPU) для вершин и индексов (лекция #6, слайд 13)
+
 bool createDeviceLocalBuffer(size_t size, VkBufferUsageFlags usage, GpuBuffer& result) {
     const VkBufferCreateInfo bufferInfo = {
         .sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,
@@ -623,7 +622,7 @@ bool endAndSubmitUploadCommands() {
     return true;
 }
 
-// Создание VkImage, VkImageView и запись команд копирования из staging в VRAM (лекция #5.2, слайды 6-20)
+
 bool createTextureFromPixels(const uint8_t* pixels, uint32_t width, uint32_t height, GpuTexture& outTex) {
     outTex.width = width;
     outTex.height = height;
@@ -679,7 +678,7 @@ bool createTextureFromPixels(const uint8_t* pixels, uint32_t width, uint32_t hei
     const VkDeviceSize imageOffset = allocateFromStaging(pixelBytes, 16);
     std::memcpy(static_cast<uint8_t*>(stagingBuffer.mapped) + imageOffset, pixels, pixelBytes);
 
-    // Барьер UNDEFINED -> TRANSFER_DST_OPTIMAL
+
     const VkImageMemoryBarrier undefToTransfer = {
         .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,
         .srcAccessMask = 0,
@@ -723,7 +722,7 @@ bool createTextureFromPixels(const uint8_t* pixels, uint32_t width, uint32_t hei
                            VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
                            1, &copyRegion);
 
-    // Барьер TRANSFER_DST_OPTIMAL -> SHADER_READ_ONLY_OPTIMAL
+
     const VkImageMemoryBarrier transferToSampled = {
         .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,
         .srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT,
@@ -750,7 +749,6 @@ bool createTextureFromPixels(const uint8_t* pixels, uint32_t width, uint32_t hei
     return true;
 }
 
-// Загрузка PNG-файла из файловой системы при помощи lodepng (лекция #5.2, слайд 4)
 bool loadTextureFromFile(const std::filesystem::path& filePath, GpuTexture& outTex) {
     uint32_t width = 0;
     uint32_t height = 0;
@@ -785,7 +783,7 @@ bool createSampler() {
     return true;
 }
 
-// Копирование вершин и индексов через staging-буфер в VRAM (лекция #6, слайды 13-15)
+
 bool createMesh(const MeshData& data, Mesh& mesh) {
     const size_t vertexBytes = sizeof(Vertex) * data.vertices.size();
     const size_t indexBytes = sizeof(uint32_t) * data.indices.size();
@@ -827,20 +825,20 @@ bool createMeshesAndTextures() {
     if (!createSampler()) return false;
     if (!beginUploadCommands()) return false;
 
-    // 1. Записываем команды копирования вершин и индексов в VRAM
+
     if (!createMesh(lab_geometry::makeIcosahedron(icosahedron_radius), icosahedronMesh) ||
         !createMesh(lab_geometry::makeCube(), cubeMesh) ||
         !createMesh(lab_geometry::makeCone(cone_segments), coneMesh)) {
         return false;
     }
 
-    // 2. Создаём служебную текстуру с одним чёрным пикселем (для отсутствующих Specular / Emissive)
+
     const uint8_t blackPixel[4] = {0, 0, 0, 255};
     if (!createTextureFromPixels(blackPixel, 1, 1, blackDummyTexture)) {
         return false;
     }
 
-    // 3. Генерируем (при отсутствии) и загружаем PNG текстуры из папки textures/
+
     const std::filesystem::path texDir = "textures";
     procedural_tex::ensureTextureFilesOnDisk(texDir);
 
@@ -876,7 +874,7 @@ bool createMeshesAndTextures() {
         }
     }
 
-    // Отправляем буфер команд на исполнение и ждём на VkFence
+
     return endAndSubmitUploadCommands();
 }
 
@@ -933,7 +931,7 @@ bool createDescriptorLayouts() {
         return false;
     }
 
-    // Set = 1: Динамический uniform буфер (binding = 0) + 3 сэмплера текстур (bindings = 1, 2, 3)
+
     const VkDescriptorSetLayoutBinding modelBindings[] = {
         {
             .binding = 0,
@@ -988,7 +986,7 @@ bool allocateDescriptorSet(VkDescriptorSetLayout layout, VkDescriptorSet& descri
 }
 
 bool createDescriptorPoolAndSets() {
-    // Вычисляем выравненный сдвиг динамического uniform-буфера (лекция #6, слайд 5)
+
     VkPhysicalDeviceProperties physicalDeviceProps{};
     vkGetPhysicalDeviceProperties(context.physical_device, &physicalDeviceProps);
     const VkDeviceSize align = physicalDeviceProps.limits.minUniformBufferOffsetAlignment;
@@ -1056,7 +1054,7 @@ bool createDescriptorPoolAndSets() {
     vkUpdateDescriptorSets(context.device, sizeof(sceneWrites) / sizeof(sceneWrites[0]),
                            sceneWrites, 0, nullptr);
 
-    // Для каждого материала создаём свой набор дескрипторов с динамическим UBO и 3 текстурами
+ 
     const VkDescriptorBufferInfo dynamicUboInfo = {
         .buffer = modelUniformBuffer.buffer,
         .offset = 0,
@@ -1525,7 +1523,7 @@ void drawAnimationUI() {
 void drawObjectUI(SceneObject& object) {
     if (!ImGui::TreeNode(object.name)) return;
 
-    // Выбор текстуры (материала) из выпадающего списка
+   
     std::vector<const char*> matNames;
     matNames.reserve(materials.size());
     for (const TextureMaterial& m : materials) {
@@ -1700,7 +1698,7 @@ void updateAllModelUniforms() {
     vmaFlushAllocation(context.allocator, modelUniformBuffer.allocation, 0, VK_WHOLE_SIZE);
 }
 
-// Отрисовка модели с передачей динамического сдвига в vkCmdBindDescriptorSets и push-констант
+
 void drawModelDynamic(const graphics::internal::FrameData& fd, const Mesh& mesh,
                       VkDescriptorSet materialDescriptorSet, uint32_t slotIndex,
                       bool nontrivialSampling) {
@@ -1748,7 +1746,7 @@ void setupScene() {
         object.dynamicSlotIndex = idx;
     };
 
-    // Икосаэдры с разными текстурами (Lava Rock, Sci-Fi с нетривиальным сэмплированием, Marble)
+   
     setup(0, "Icosahedron A (Lava Perlin Emissive)", &icosahedronMesh,
           {-2.6f, 0.0f, 6.0f}, {1.0f, 1.0f, 1.0f}, 0, 1.0f, 64.0f, false);
     setup(1, "Icosahedron B (Non-trivial Sampling)", &icosahedronMesh,
@@ -1762,7 +1760,7 @@ void setupScene() {
         objects[i].phaseOffset = 2.0f * lab_math::PI * static_cast<float>(i) / 3.0f;
     }
 
-    // Окружение: пол и стены с тайлингом текстур
+  
     setup(3, "Floor", &cubeMesh,
           {0.0f, 3.1f, 4.0f}, {16.0f, 0.2f, 14.0f}, 3, 4.0f, 32.0f, false);
     setup(4, "Back wall", &cubeMesh,
@@ -1918,7 +1916,7 @@ void render(const graphics::internal::FrameData& fd) {
                          object.dynamicSlotIndex, object.nontrivialSampling);
     }
 
-    // Рёбра икосаэдров
+
     if (showEdges) {
         vkCmdBindPipeline(fd.command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, edgePipeline);
         for (uint32_t i = 0; i < 3; ++i) {
@@ -1940,7 +1938,7 @@ void render(const graphics::internal::FrameData& fd) {
         }
     }
 
-    // Маркеры источников света (используют тот же динамический UBO с разными сдвигами)
+
     if (showLightMarkers) {
         vkCmdBindPipeline(fd.command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, markerPipeline);
         for (size_t i = 0; i < pointLights.size(); ++i) {
@@ -1953,7 +1951,7 @@ void render(const graphics::internal::FrameData& fd) {
         }
     }
 
-    // Конусы прожекторов
+  
     if (showSpotCones) {
         vkCmdBindPipeline(fd.command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, linePipeline);
         for (size_t i = 0; i < spotLights.size(); ++i) {
