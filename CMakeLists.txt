@@ -48,6 +48,12 @@ FetchContent_Declare(
 	GIT_TAG v1.92.9
 )
 
+FetchContent_Declare(
+	lodepng
+	GIT_REPOSITORY https://github.com/lvandeve/lodepng.git
+	GIT_TAG master
+)
+
 find_package(Vulkan REQUIRED)
 
 set(GLFW_LIBRARY_TYPE STATIC)
@@ -60,6 +66,7 @@ FetchContent_MakeAvailable(
 	vk-bootstrap
 	VulkanMemoryAllocator
 	imgui
+	lodepng
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -69,7 +76,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	GPUOpen::VulkanMemoryAllocator
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${imgui_SOURCE_DIR} ${imgui_SOURCE_DIR}/backends)
+target_include_directories(${PROJECT_NAME} PRIVATE
+	${imgui_SOURCE_DIR}
+	${imgui_SOURCE_DIR}/backends
+	${lodepng_SOURCE_DIR}
+)
+
 target_sources(${PROJECT_NAME} PRIVATE
 	${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
 	${imgui_SOURCE_DIR}/backends/imgui_impl_vulkan.cpp
@@ -78,6 +90,7 @@ target_sources(${PROJECT_NAME} PRIVATE
 	${imgui_SOURCE_DIR}/imgui_tables.cpp
 	${imgui_SOURCE_DIR}/imgui_widgets.cpp
 	${imgui_SOURCE_DIR}/imgui_demo.cpp
+	${lodepng_SOURCE_DIR}/lodepng.cpp
 )
 
 # Compile shaders
@@ -100,19 +113,12 @@ if(GLSLC_FOUND)
 		list(APPEND _SHADER_BINARIES ${SHADER_BINARY_PATH})
 	endmacro()
 
-	# To compile shader file, use compile_shader function with a file name
-	# of a shader inside shaders directory. See example below:
-
-	# compile_shader(example.vert)
-	# compile_shader(example.frag)
-
-	# Шейдеры лабораторной работы №2 (камера и освещение).
-	# glslc компилирует их в shaders/*.spv рядом с исходниками,
-	# откуда application.cpp их загружает (loadShaderModule).
 	compile_shader(lit.vert)
 	compile_shader(lit.frag)
 	compile_shader(unlit.vert)
 	compile_shader(unlit.frag)
+	compile_shader(edge.vert)
+	compile_shader(edge.frag)
 
 	add_custom_target(shaders DEPENDS ${_SHADER_BINARIES})
 	add_dependencies(${PROJECT_NAME} shaders)

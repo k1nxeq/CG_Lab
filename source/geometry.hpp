@@ -12,6 +12,7 @@ struct Vertex {
     float position[3];
     float normal[3];
     float smoothNormal[3];
+    float uv[2];
 };
 
 struct MeshData {
@@ -26,11 +27,14 @@ namespace detail {
 
 inline Vertex makeVertex(const lab_math::Vec3& position,
                          const lab_math::Vec3& normal,
-                         const lab_math::Vec3& smoothNormal) {
+                         const lab_math::Vec3& smoothNormal,
+                         float u = 0.0f,
+                         float v = 0.0f) {
     return {
         {position.x, position.y, position.z},
         {normal.x, normal.y, normal.z},
         {smoothNormal.x, smoothNormal.y, smoothNormal.z},
+        {u, v},
     };
 }
 
@@ -50,6 +54,13 @@ inline void pushTriangle(MeshData& mesh, uint32_t a, uint32_t b, uint32_t c,
     mesh.indices.push_back(a);
     mesh.indices.push_back(b);
     mesh.indices.push_back(c);
+}
+
+inline std::pair<float, float> sphericalUV(const lab_math::Vec3& p) {
+    const lab_math::Vec3 n = lab_math::normalize(p);
+    const float u = 0.5f + std::atan2(n.z, n.x) / (2.0f * lab_math::PI);
+    const float v = 0.5f - std::asin(std::clamp(n.y, -1.0f, 1.0f)) / lab_math::PI;
+    return {u, v};
 }
 
 } // namespace detail
@@ -89,17 +100,28 @@ inline MeshData makeIcosahedron(float radius) {
         if (lab_math::dot(faceNormal, centroid) < 0.0f) {
             faceNormal = lab_math::scale(faceNormal, -1.0f);
         }
+
+        // Сферическая развёртка с коррекцией шва по долготе
+        auto [uA, vA] = detail::sphericalUV(a);
+        auto [uB, vB] = detail::sphericalUV(b);
+        auto [uC, vC] = detail::sphericalUV(c);
+
+        if (std::fabs(uA - uB) > 0.5f || std::fabs(uB - uC) > 0.5f || std::fabs(uA - uC) > 0.5f) {
+            const float maxU = std::max({uA, uB, uC});
+            if (maxU - uA > 0.5f) uA += 1.0f;
+            if (maxU - uB > 0.5f) uB += 1.0f;
+            if (maxU - uC > 0.5f) uC += 1.0f;
+        }
+
         const uint32_t first = static_cast<uint32_t>(mesh.vertices.size());
-        mesh.vertices.push_back(detail::makeVertex(a, faceNormal, lab_math::normalize(a)));
-        mesh.vertices.push_back(detail::makeVertex(b, faceNormal, lab_math::normalize(b)));
-        mesh.vertices.push_back(detail::makeVertex(c, faceNormal, lab_math::normalize(c)));
+        mesh.vertices.push_back(detail::makeVertex(a, faceNormal, lab_math::normalize(a), uA, vA));
+        mesh.vertices.push_back(detail::makeVertex(b, faceNormal, lab_math::normalize(b), uB, vB));
+        mesh.vertices.push_back(detail::makeVertex(c, faceNormal, lab_math::normalize(c), uC, vC));
         detail::pushTriangle(mesh, first, first + 1, first + 2, faceNormal);
     }
 
-    // Сохраняем количество индексов треугольников
     mesh.triangleIndexCount = static_cast<uint32_t>(mesh.indices.size());
 
-    // Генерируем рёбра (30 рёбер × 2 вершины = 60 индексов)
     mesh.edgeFirstIndex = static_cast<uint32_t>(mesh.indices.size());
     for (uint32_t i = 0; i < 20; ++i) {
         uint32_t first = i * 3;
@@ -122,6 +144,9 @@ inline MeshData makeCube() {
     const float corners[4][2] = {
         {-0.5f, -0.5f}, {0.5f, -0.5f}, {0.5f, 0.5f}, {-0.5f, 0.5f},
     };
+    const float uvs[4][2] = {
+        {0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 1.0f},
+    };
     for (int axis = 0; axis < 3; ++axis) {
         for (int sign = -1; sign <= 1; sign += 2) {
             const int u = (axis + 1) % 3;
@@ -130,13 +155,13 @@ inline MeshData makeCube() {
             normalArray[axis] = static_cast<float>(sign);
             const lab_math::Vec3 normal = {normalArray[0], normalArray[1], normalArray[2]};
             const uint32_t first = static_cast<uint32_t>(mesh.vertices.size());
-            for (const auto& corner : corners) {
+            for (int c = 0; c < 4; ++c) {
                 float p[3];
                 p[axis] = 0.5f * static_cast<float>(sign);
-                p[u] = corner[0];
-                p[v] = corner[1];
+                p[u] = corners[c][0];
+                p[v] = corners[c][1];
                 mesh.vertices.push_back(
-                    detail::makeVertex({p[0], p[1], p[2]}, normal, normal));
+                    detail::makeVertex({p[0], p[1], p[2]}, normal, normal, uvs[c][0], uvs[c][1]));
             }
             detail::pushTriangle(mesh, first, first + 1, first + 2, normal);
             detail::pushTriangle(mesh, first, first + 2, first + 3, normal);
@@ -149,13 +174,13 @@ inline MeshData makeCube() {
 inline MeshData makeCone(uint32_t segments) {
     MeshData mesh;
     const lab_math::Vec3 zero = {0.0f, 0.0f, 0.0f};
-    mesh.vertices.push_back(detail::makeVertex({0.0f, 0.0f, 0.0f}, zero, zero));
-    mesh.vertices.push_back(detail::makeVertex({0.0f, 0.0f, 1.0f}, zero, zero));
+    mesh.vertices.push_back(detail::makeVertex({0.0f, 0.0f, 0.0f}, zero, zero, 0.5f, 0.0f));
+    mesh.vertices.push_back(detail::makeVertex({0.0f, 0.0f, 1.0f}, zero, zero, 0.5f, 1.0f));
     for (uint32_t i = 0; i < segments; ++i) {
-        const float angle = 2.0f * lab_math::PI * static_cast<float>(i) /
-                            static_cast<float>(segments);
+        const float t = static_cast<float>(i) / static_cast<float>(segments);
+        const float angle = 2.0f * lab_math::PI * t;
         mesh.vertices.push_back(detail::makeVertex(
-            {std::cos(angle), std::sin(angle), 1.0f}, zero, zero));
+            {std::cos(angle), std::sin(angle), 1.0f}, zero, zero, t, 1.0f));
     }
     for (uint32_t i = 0; i < segments; ++i) {
         mesh.indices.push_back(2 + i);
